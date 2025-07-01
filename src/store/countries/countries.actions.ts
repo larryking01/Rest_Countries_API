@@ -7,7 +7,7 @@ export const loadCountries = createAction('[Country List] Load All Countries')
 
 export const loadCountriesSuccess = createAction(
     '[Country API] Load Countries Success', 
-    props<{country: Country[]}>()
+    props<{countries: Country[]}>()
 )
 
 export const loadCountriesFailure = createAction(

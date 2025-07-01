@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Country } from '../../../models/countryInterface';
 
@@ -24,8 +25,11 @@ export class CountryApiService {
   }
 
 
-  fetchCountryDetails(countryCode: string = 'TGO') {
-    return this.httpClient.get<Country>(`https://restcountries.com/v3.1/alpha/${ countryCode }`)
+  fetchCountryByCode(countryCode: string = 'TGO') {
+    return this.httpClient.get<Country[]>(`https://restcountries.com/v3.1/alpha/${ countryCode }`)
+    .pipe(
+      map((response: any) => response[0])    // correctly type response later
+    )
   }
 
 
