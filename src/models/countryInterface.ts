@@ -15,6 +15,7 @@ export interface Country {
     };
   };
   tld?: string[];
+  cca3: string,
   currencies?: {
     [currencyCode: string]: {
       name: string;
@@ -28,4 +29,5 @@ export interface Country {
     [langCode: string]: string;
   };
   population: number;
+  borders: string[]
 }

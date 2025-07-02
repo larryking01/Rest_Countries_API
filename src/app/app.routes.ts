@@ -12,7 +12,7 @@ export const routes: Routes = [
         title: 'All countries'
     },
     {
-        path: 'country-details',
+        path: 'country-details/:code',
         component: CountryDetailsComponent,
         title: 'Country details'
     },

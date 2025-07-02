@@ -12,7 +12,7 @@ import { Country } from '../../../models/countryInterface';
 export class CountryApiService {
 
   httpClient = inject( HttpClient )
-  fields = 'all?fields=name,population,region,capital,subregion,capital,tld,currencies,languages,flags'
+  fields = 'all?fields=name,population,region,capital,subregion,cca3,capital,currencies,languages,flags'
   rawFields = 'https://restcountries.com/v3.1/all?fields=name,population,region,capital,subregion,capital,tld,currencies,languages,flags'
 
   countriesUrl = `${ environment.base_url }${ this.fields }`

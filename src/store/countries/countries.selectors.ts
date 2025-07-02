@@ -36,17 +36,30 @@ export const selectError = createSelector(
 )
 
 
-
-
-export const selectFilteredCountries = createSelector(
+export const selectSearchedCountries = createSelector(
   selectAllCountries,
   selectSearchQuery,
-  selectFilterRegion,
-  (countries, query, region) => {
-    return countries.filter(country => {
-      const matchesRegion = region ? country.region.toLowerCase() === region.toLowerCase() : true;
-      const matchesSearch = country.name.common.toLowerCase().includes(query.toLowerCase());
-      return matchesRegion && matchesSearch;
-    });
+  (countries, query) => {
+    if (!query) return countries;
+    const lower = query.toLowerCase();
+    return countries.filter(country =>
+      country.name.common.toLowerCase().includes(lower)
+    );
   }
 );
+
+
+export const selectRegionFilteredCountries = createSelector(
+  selectSearchedCountries,
+  selectFilterRegion,
+  (countries, region) => {
+    if (!region) return countries;
+    const lower = region.toLowerCase();
+    return countries.filter(country =>
+      country.region.toLowerCase() === lower
+    );
+  }
+);
+
+
+export const selectFilteredCountries = selectRegionFilteredCountries;
