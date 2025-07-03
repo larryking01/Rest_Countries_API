@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@use './app/styles/_resets' as *;
+
+
+:root {
+    --theme-bg: #F2F2F2;
+    --element-bg: #FFFFFF;
+    --title-text-col: #111517;
+    --sub-title-text-col: #111517;
+    --normal-text-col: #848484;
+}

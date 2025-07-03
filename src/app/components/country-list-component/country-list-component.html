@@ -1,1 +1,132 @@
-<p>country-list-component works!</p>
+<!-- <div class="filters">
+  <input
+    type="text"
+    [formControl]="searchControl"
+    placeholder="Search by country name"
+  />
+
+  <select [formControl]="regionControl">
+    <option value="">All Regions</option>
+    <option>Africa</option>
+    <option>Americas</option>
+    <option>Asia</option>
+    <option>Europe</option>
+    <option>Oceania</option>
+  </select>
+</div>
+
+
+@if( loading$ | async ) {
+  <p>Loading countries....</p>
+}
+@if (countries$ | async; as countries) {
+  @if (countries.length > 0) {
+    <div class="country-grid">
+      @for (country of countries; let index = $index; track country.name.common; let count = $count ) {
+        <div class="country-card" (click)="goToDetails(country.cca3)">
+        <h3>Showing {{ index + 1 }} of {{ count }} countries</h3>
+          <img
+            [src]="country.flags.png"
+            [alt]="country.flags.alt || country.name.common"
+            class="flag"
+          />
+          <h3>{{ country.name.common }}</h3>
+          <p>Population: {{ country.population | number }}</p>
+          <p>Region: {{ country.region }}</p>
+          <p>Capital: {{ country.capital?.[0] || 'N/A' }}</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <p>No countries match your search or filter.</p>
+  }
+}
+
+@if(errors$ | async; as error ) {
+    <div class="error-box">
+      <p>Error: {{ error }}</p>
+      <button (click)="retryLoad()">Retry</button>  
+    </div>
+
+} -->
+
+
+
+<main class="container">
+  <app-navbar />
+
+  <article class="main-content">
+    <section class="filter-controls">
+      <div class="search-input-div">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="search">
+        <path id="Shape" fill-rule="evenodd" clip-rule="evenodd" d="M12.5 11H11.7L11.4 10.7C12.4 9.6 13 8.1 13 6.5C13 2.9 10.1 0 6.5 0C2.9 0 0 2.9 0 6.5C0 10.1 2.9 13 6.5 13C8.1 13 9.6 12.4 10.7 11.4L11 11.7V12.5L16 17.5L17.5 16L12.5 11ZM6.5 11C4 11 2 9 2 6.5C2 4 4 2 6.5 2C9 2 11 4 11 6.5C11 9 9 11 6.5 11Z" fill="#848484"/>
+        </g>
+        </svg>
+
+        <input
+          type="text"
+          [formControl]="searchControl"
+          placeholder="Search by country name"
+          class="search-input"
+        />
+      </div>
+
+      <div>
+        <select [formControl]="regionControl" class="select-input">
+          <option value="">All Regions</option>
+          <option>Africa</option>
+          <option>Americas</option>
+          <option>Asia</option>
+          <option>Europe</option>
+          <option>Oceania</option>
+        </select>
+      </div>
+    </section>
+
+
+    <section class="countries-display">
+      @if( loading$ | async ) {
+        <p>Loading countries....</p>
+      }
+      @if( countries$ | async; as countries ) {
+        @if( countries.length > 0 ) {
+          <div class="display-grid">
+            @for( country of countries; let index = $index; track country.name.common; let count = $count ) {
+              <div class="country-card" (click)="goToDetails(country.cca3)">
+                <h3>Showing {{ index + 1 }} of {{ count }} countries</h3>
+                <img
+                  [src]="country.flags.png"
+                  [alt]="country.flags.alt || country.name.common"
+                  class="flag"
+                />
+                <h3>{{ country.name.common }}</h3>
+                <p>Population: {{ country.population | number }}</p>
+                <p>Region: {{ country.region }}</p>
+                <p>Capital: {{ country.capital?.[0] || 'N/A' }}</p>
+              </div>
+            }
+          </div>
+        }
+        @else {
+            <p>No countries match your search or filter.</p>
+          }      
+        }
+        @if(errors$ | async; as error ) {
+            <div class="error-box">
+              <p>Error: {{ error }}</p>
+              <button (click)="retryLoad()">Retry</button>  
+            </div>
+
+        }
+
+
+    </section>
+
+
+
+
+
+  </article>
+
+</main>
