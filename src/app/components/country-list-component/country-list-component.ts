@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 import { loadCountries, setSearchQuery, setFilterRegion } from '../../../store/countries/countries.actions';
 import { selectError, selectFilteredCountries, selectLoading } from '../../../store/countries/countries.selectors';
 import { CountryState } from '../../../store/countries/countries.state';
-
+import { Navbar } from '../navbar/navbar';
 
 
 
 @Component({
   selector: 'app-country-list-component',
-  imports: [AsyncPipe, CommonModule, ReactiveFormsModule],
+  imports: [AsyncPipe, CommonModule, ReactiveFormsModule, Navbar],
   templateUrl: './country-list-component.html',
   styleUrl: './country-list-component.scss'
 })
