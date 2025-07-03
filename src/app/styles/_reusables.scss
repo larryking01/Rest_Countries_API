@@ -1,0 +1,33 @@
+
+@mixin titleFont() {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--font-col);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+@mixin subTitleFont() {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--font-col);
+    letter-spacing: 0px;
+    font-size: 1.125;
+    font-weight: bold;
+}
+
+
+@mixin regularFont() {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--font-col);
+    font-size: 0.875rem;
+    font-weight: normal;
+}
+
+
+@mixin bodyFont() {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--font-col);
+    letter-spacing: 0px;
+    font-size: 0.875rem;
+    font-weight: normal;
+}

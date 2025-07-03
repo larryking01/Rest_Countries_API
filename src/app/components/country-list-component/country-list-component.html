@@ -1,57 +1,3 @@
-<!-- <div class="filters">
-  <input
-    type="text"
-    [formControl]="searchControl"
-    placeholder="Search by country name"
-  />
-
-  <select [formControl]="regionControl">
-    <option value="">All Regions</option>
-    <option>Africa</option>
-    <option>Americas</option>
-    <option>Asia</option>
-    <option>Europe</option>
-    <option>Oceania</option>
-  </select>
-</div>
-
-
-@if( loading$ | async ) {
-  <p>Loading countries....</p>
-}
-@if (countries$ | async; as countries) {
-  @if (countries.length > 0) {
-    <div class="country-grid">
-      @for (country of countries; let index = $index; track country.name.common; let count = $count ) {
-        <div class="country-card" (click)="goToDetails(country.cca3)">
-        <h3>Showing {{ index + 1 }} of {{ count }} countries</h3>
-          <img
-            [src]="country.flags.png"
-            [alt]="country.flags.alt || country.name.common"
-            class="flag"
-          />
-          <h3>{{ country.name.common }}</h3>
-          <p>Population: {{ country.population | number }}</p>
-          <p>Region: {{ country.region }}</p>
-          <p>Capital: {{ country.capital?.[0] || 'N/A' }}</p>
-        </div>
-      }
-    </div>
-  } @else {
-    <p>No countries match your search or filter.</p>
-  }
-}
-
-@if(errors$ | async; as error ) {
-    <div class="error-box">
-      <p>Error: {{ error }}</p>
-      <button (click)="retryLoad()">Retry</button>  
-    </div>
-
-} -->
-
-
-
 <main class="container">
   <app-navbar />
 
@@ -67,14 +13,14 @@
         <input
           type="text"
           [formControl]="searchControl"
-          placeholder="Search by country name"
+          placeholder="Search for a country"
           class="search-input"
         />
       </div>
 
       <div>
         <select [formControl]="regionControl" class="select-input">
-          <option value="">All Regions</option>
+          <option value="">Filter by Region</option>
           <option>Africa</option>
           <option>Americas</option>
           <option>Asia</option>
@@ -90,20 +36,22 @@
         <p>Loading countries....</p>
       }
       @if( countries$ | async; as countries ) {
+        <p class="total-countries-text">Showing {{ countries.length }} countries</p>
         @if( countries.length > 0 ) {
           <div class="display-grid">
             @for( country of countries; let index = $index; track country.name.common; let count = $count ) {
               <div class="country-card" (click)="goToDetails(country.cca3)">
-                <h3>Showing {{ index + 1 }} of {{ count }} countries</h3>
                 <img
                   [src]="country.flags.png"
                   [alt]="country.flags.alt || country.name.common"
                   class="flag"
                 />
-                <h3>{{ country.name.common }}</h3>
-                <p>Population: {{ country.population | number }}</p>
-                <p>Region: {{ country.region }}</p>
-                <p>Capital: {{ country.capital?.[0] || 'N/A' }}</p>
+                <div class="country-details-div">
+                  <h3 class="common-name-text">{{ country.name.common }}</h3>
+                  <p class="detail-title-text">Population: <span class="detail-body-text"> {{ country.population | number }} </span></p>
+                  <p class="detail-title-text">Region: <span class="detail-body-text"> {{ country.region }}</span></p>
+                  <p class="detail-title-text">Capital: <span class="detail-body-text">{{ country.capital?.[0] || 'N/A' }}</span> </p>
+                </div>
               </div>
             }
           </div>
