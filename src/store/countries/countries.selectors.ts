@@ -36,6 +36,20 @@ export const selectError = createSelector(
 )
 
 
+export const selectBorderCountries = createSelector(
+  selectAllCountries,
+  selectSelectedCountry,
+  (allCountries, selected) => {
+    if (!selected || !selected.borders?.length) {
+      return [];
+    }
+    return selected.borders
+      .map(code => allCountries.find(c => c.cca3 === code))
+      .filter(Boolean); // Filters out undefined
+  }
+);
+
+
 export const selectSearchedCountries = createSelector(
   selectAllCountries,
   selectSearchQuery,

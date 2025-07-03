@@ -14,12 +14,34 @@
     <p><strong>Capital:</strong> {{ country.capital?.[0] || 'N/A' }}</p>
     <p><strong>Currencies:</strong> {{ country.currencies | json }}</p>
     <p><strong>Languages:</strong> {{ country.languages | json }}</p>
-    <p><strong>Border Countries:</strong> {{ country.borders | json }}</p>
 
-  </div>
-} @else {
-  <p>Loading country details...</p>
-}
+    <!-- @for( let border of country.borders) -->
+    <!-- <p><strong>Border Countries:</strong> {{ country.borders | json }}</p> -->
+
+    @if( borderCountries$ | async; as borders ) {
+      <div>
+        <h4>Border countries</h4>
+        @if( borders.length > 0 ) {
+          <div class="border-country-list">
+              @for (country of borders; track $index) {
+                @if( country ) {
+                  <button (click)="goToDetails(country.cca3)">
+                    {{ country.name.common }}
+                  </button>
+                }
+              }
+          </div>
+        }
+      </div>
+    } 
+    @else {
+       <p>Loading country details...</p>
+    }
 
 
 <button (click)="goToCountryList()">Back to List</button>
+
+
+</div>
+
+}

@@ -38,6 +38,24 @@ export class CountryListComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    // Reset filters when the list page is loaded
+    this.store.dispatch(setSearchQuery({ query: '' }));
+    this.store.dispatch(setFilterRegion({ region: '' }));
+
+    
+    // load countries if not already loaded
+    this.subscriptions.add(
+      this.countries$.pipe(
+        tap( countries => console.log('countries fetched: ', countries ))
+        )
+        .subscribe( countries => {
+          if(!countries || countries.length === 0 ) {
+            this.store.dispatch(loadCountries())
+          }
+        })
+    )
+
+
     // search listener
     this.subscriptions.add(
       this.searchControl.valueChanges.pipe(
@@ -58,17 +76,6 @@ export class CountryListComponent implements OnInit, OnDestroy {
     )
 
 
-    // load countries if not already loaded
-    this.subscriptions.add(
-      this.countries$.pipe(
-        tap( countries => console.log('countries fetched: ', countries ))
-        )
-        .subscribe( countries => {
-          if(!countries || countries.length === 0 ) {
-            this.store.dispatch(loadCountries())
-          }
-        })
-    )
 
   }
 
@@ -86,9 +93,5 @@ export class CountryListComponent implements OnInit, OnDestroy {
   goToDetails(code: string) {
     this.router.navigate(['country-details', code])
   }
-
-
-
-
 
 }
