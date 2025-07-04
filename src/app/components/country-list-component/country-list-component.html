@@ -33,7 +33,7 @@
 
     <section class="countries-display">
       @if( loading$ | async ) {
-        <p>Loading countries....</p>
+        <p class="total-countries-text">Loading countries....</p>
       }
       @if( countries$ | async; as countries ) {
         <p class="total-countries-text">Showing {{ countries.length }} countries</p>
