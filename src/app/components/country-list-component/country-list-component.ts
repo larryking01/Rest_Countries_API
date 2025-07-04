@@ -7,7 +7,6 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { loadCountries, setSearchQuery, setFilterRegion } from '../../../store/countries/countries.actions';
 import { selectError, selectFilteredCountries, selectLoading } from '../../../store/countries/countries.selectors';
-import { CountryState } from '../../../store/countries/countries.state';
 import { Navbar } from '../navbar/navbar';
 
 
@@ -19,7 +18,6 @@ import { Navbar } from '../navbar/navbar';
   styleUrl: './country-list-component.scss'
 })
 export class CountryListComponent implements OnInit, OnDestroy {
-  // private store = inject(Store<{ countries: CountryState }>)
   private store = inject(Store)
   private subscriptions = new Subscription()
   private router = inject( Router )
@@ -37,16 +35,12 @@ export class CountryListComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    // Reset filters when the list page is loaded
     this.store.dispatch(setSearchQuery({ query: '' }));
     this.store.dispatch(setFilterRegion({ region: '' }));
 
     
-    // load countries if not already loaded
     this.subscriptions.add(
-      this.countries$.pipe(
-        tap( countries => console.log('countries fetched: ', countries ))
-        )
+      this.countries$
         .subscribe( countries => {
           if(!countries || countries.length === 0 ) {
             this.store.dispatch(loadCountries())
@@ -73,8 +67,6 @@ export class CountryListComponent implements OnInit, OnDestroy {
         this.store.dispatch(setFilterRegion({ region: region ?? '' }))
       })
     )
-
-
 
   }
 

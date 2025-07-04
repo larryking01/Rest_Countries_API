@@ -28,11 +28,6 @@ export class CountryDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // const code = this.activatedRoute.snapshot.paramMap.get('code')
-    // if( code ) {
-    //   this.store.dispatch(loadCountryByCode({ code }))
-    // }
-
     this.activatedRoute.paramMap.subscribe( params => {
       const code = params.get('code')
 
@@ -40,7 +35,6 @@ export class CountryDetailsComponent implements OnInit {
         this.store.dispatch(loadCountryByCode({ code }))
       }
     })
-
 
   }
 
@@ -58,9 +52,7 @@ export class CountryDetailsComponent implements OnInit {
   }
 
   getCurrencyList( currencies: {[code: string]: { name: string, symbol: string }} | undefined) : string {
-    return currencies ? Object.values( currencies ).map( c => c.name ).join(', ') : 'N/A'
+    return currencies ? Object.values( currencies ).map( currency => currency.name ).join(', ') : 'N/A'
   }
-
-
 
 }

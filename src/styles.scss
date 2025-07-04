@@ -14,5 +14,21 @@
     --theme-nav-box-shadow-col: rgba(0, 0, 0, 0.0562);
     --theme-control-box-shadow-col: rgba(0, 0, 0, 0.0532);
     --theme-country-card-box-shadow-col: rgba(0, 0, 0, 0.0294);
+    --theme-btn-box-shadow-col: rgba(0, 0, 0, 0.2931);
+    --theme-icon-bg: #111517;
+}
 
+
+
+body.dark {
+    --theme-bg: #000;
+    --element-bg: #2B3844;
+    --title-text-col: #FFFFFF;
+    --sub-title-text-col: #FFFFFF;
+    --normal-text-col: #FFFFFF;
+    --font-col: #FFFFFF;
+    --theme-nav-box-shadow-col: rgba(0, 0, 0, 0.0562);
+    --theme-control-box-shadow-col: rgba(0, 0, 0, 0.0532);
+    --theme-country-card-box-shadow-col: rgba(0, 0, 0, 0.0294);
+    --theme-icon-bg: #FFFFFF;
 }
