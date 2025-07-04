@@ -10,6 +10,11 @@
 
     .back-button {
       margin-bottom: 4rem;
+      height: 2.5rem;
+      width: 8.5rem;
+      padding: 0.625rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
     //   background-color: red;
       transition: border 0.3s ease;
 

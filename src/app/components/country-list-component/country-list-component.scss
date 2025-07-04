@@ -54,6 +54,8 @@
 
    .select-input {
       // appearance: none;
+      // -moz-appearance: none;    
+      // -webkit-appearance: none;
       background-color: var(--element-bg);
       width: 12.5rem;
       height: 3.5rem;
@@ -64,7 +66,9 @@
       cursor: pointer;
       box-shadow: 0px 2px 9px 0px var(--theme-control-box-shadow-col);
       transition: border 0.3s ease;
-
+      
+      
+      
       &:hover {
          border: 1px solid var(--theme-element-hover-col);
       }

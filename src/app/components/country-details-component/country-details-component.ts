@@ -2,10 +2,10 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { selectTheme } from '../../../store/theme/theme.selectors';
 import { CountryState } from '../../../store/countries/countries.state';
 import { loadCountryByCode } from '../../../store/countries/countries.actions';
 import { selectBorderCountries, selectSelectedCountry } from '../../../store/countries/countries.selectors';
-import { CountryApiService } from '../../services/countryApi/country-api-service';
 import { Navbar } from '../navbar/navbar';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
@@ -26,17 +26,35 @@ export class CountryDetailsComponent implements OnInit {
 
   borderCountries$ = this.store.select(selectBorderCountries)
 
+  isDark: boolean = false;
+
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe( params => {
       const code = params.get('code')
-
       if( code ) {
         this.store.dispatch(loadCountryByCode({ code }))
       }
     })
 
+    
+    this.getCurrentTheme()
+
   }
+
+
+  getCurrentTheme() {
+    this.store.select( selectTheme ).subscribe( theme => {
+      if( theme === 'dark') {
+        this.isDark = true
+      }
+      else {
+        this.isDark = false
+      }
+    })
+  }
+
+
 
   goToDetails(code: string) {
     this.router.navigate(['/country-details', code])
