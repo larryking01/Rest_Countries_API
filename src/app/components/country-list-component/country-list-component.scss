@@ -3,6 +3,7 @@
 
 .container {
   background-color: var(--theme-bg);
+  transition: background-color 0.4s ease, color 0.4s ease;
   min-height: 100vh;
 
 
@@ -38,6 +39,11 @@
       border: none;
       @include regularFont();
       box-shadow: 0px 2px 9px 0px var(--theme-control-box-shadow-col);
+      transition: border 0.3s ease;
+
+      &:hover {
+         border: 1px solid var(--theme-element-hover-col);
+      }
 
 
       &::placeholder {
@@ -51,12 +57,17 @@
       background-color: var(--element-bg);
       width: 12.5rem;
       height: 3.5rem;
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.5rem;
       border-radius: 0.4rem;
       border: none;
       @include regularFont();
       cursor: pointer;
       box-shadow: 0px 2px 9px 0px var(--theme-control-box-shadow-col);
+      transition: border 0.3s ease;
+
+      &:hover {
+         border: 1px solid var(--theme-element-hover-col);
+      }
    }
 
 
@@ -78,12 +89,12 @@
       cursor: pointer;
       box-shadow: 0px 0px 7px 2px var(--theme-country-card-box-shadow-col);
       border-radius: 5px;
-      transition: transform 0.3s ease, border-bottom 0.3s ease;
+      transition: transform 0.3s ease, border 0.3s ease;
 
 
       &:hover {
          transform: translateY(-4%);
-         border-bottom: 3px solid grey;
+         border: 3px solid var(--theme-element-hover-col);
       }
    }
 
