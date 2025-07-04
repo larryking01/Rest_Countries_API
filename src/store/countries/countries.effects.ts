@@ -10,7 +10,6 @@ export class CountryEffects {
   private actions$ = inject(Actions);
   private countryApiService = inject(CountryApiService);
 
-  // === Load all countries ===
   loadCountries$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CountryActions.loadCountries),
@@ -27,7 +26,6 @@ export class CountryEffects {
   );
 
 
-  // === Load country by code ===
   loadCountryByCode$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CountryActions.loadCountryByCode),

@@ -45,7 +45,7 @@ export const selectBorderCountries = createSelector(
     }
     return selected.borders
       .map(code => allCountries.find(c => c.cca3 === code))
-      .filter(Boolean); // Filters out undefined
+      .filter(Boolean);
   }
 );
 

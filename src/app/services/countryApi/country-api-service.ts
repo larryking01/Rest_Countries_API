@@ -33,9 +33,4 @@ export class CountryApiService {
   }
 
 
-  fetchMultipleCountries() {
-
-  }
-
-
 }
