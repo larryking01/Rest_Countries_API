@@ -5,12 +5,13 @@ import { Store } from '@ngrx/store';
 import { CountryState } from '../../../store/countries/countries.state';
 import { loadCountryByCode } from '../../../store/countries/countries.actions';
 import { selectBorderCountries, selectSelectedCountry } from '../../../store/countries/countries.selectors';
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { CountryApiService } from '../../services/countryApi/country-api-service';
+import { Navbar } from '../navbar/navbar';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-country-details-component',
-  imports: [AsyncPipe, JsonPipe],
+  imports: [AsyncPipe, Navbar, CommonModule],
   templateUrl: './country-details-component.html',
   styleUrl: './country-details-component.scss'
 })
@@ -50,6 +51,14 @@ export class CountryDetailsComponent implements OnInit {
 
   goToDetails(code: string) {
     this.router.navigate(['/country-details', code])
+  }
+
+  getLanguageList( languages: {[code: string]: string} | undefined ): string {
+    return languages ? Object.values(languages).join(', ') : 'N/A'
+  }
+
+  getCurrencyList( currencies: {[code: string]: { name: string, symbol: string }} | undefined) : string {
+    return currencies ? Object.values( currencies ).map( c => c.name ).join(', ') : 'N/A'
   }
 
 

@@ -1,0 +1,193 @@
+@use '../../styles/_reusables' as *;
+
+.main-content {
+    background-color: var(--theme-bg);
+    // background-color: red;
+    padding: 5rem 5rem;
+    // height: 100vh;
+
+
+    .back-button {
+        margin-bottom: 4rem;
+    }
+
+
+    // .country-details-section {
+    //     background-color: green;
+    // }
+
+    .country-details-flex {
+        display: flex;
+        justify-content: space-between;
+        gap: 7rem;
+        // background-color: yellow;
+
+    }
+
+    .country-flag-img {
+        width: 34rem;
+        height: 25rem;
+    }
+
+    .country-details-article {
+        // background-color: blue;
+        height: 20rem;
+        align-self: center;
+    }
+
+    h2 {
+        margin-bottom: 1.5rem;
+        @include titleFont();
+        font-size: 2rem;
+        width: 100%;
+    }
+
+
+    .country-details-text-div {
+        display: flex;
+        justify-content: space-between;
+        gap: 4rem;
+        margin-bottom: 3rem;
+        // background-color: green;
+    }
+
+    .country-main-info {
+        width: 38%;
+        // background-color: pink;
+    }
+
+    .country-sub-info {
+        width: 50%;
+        // background-color: orange;
+    }
+
+
+    strong {
+        @include subTitleFont();
+    }
+
+    p {
+        @include bodyFont();
+        margin-bottom: 0.5rem;
+    }
+
+    h4 {
+        @include subTitleFont();
+    }
+
+
+    .border-countries-section {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    button {
+        width: 5.3rem;
+        height: 1.8rem;
+        margin-right: 0.4rem;
+        margin-bottom: 0.3rem;
+        @include bodyFont();
+        cursor: pointer;
+    }
+
+}
+
+
+
+
+
+@media (max-width: 600px) {
+.main-content {
+    background-color: var(--theme-bg);
+    background-color: red;
+    padding: 7rem 5rem;
+    // height: 100vh;
+
+
+    .back-button {
+        margin-bottom: 5rem;
+    }
+
+
+    .country-details-section {
+        background-color: green;
+    }
+
+    .country-details-flex {
+        display: flex;
+        justify-content: space-between;
+        gap: 7rem;
+        background-color: yellow;
+
+    }
+
+    .country-flag-img {
+        width: 34rem;
+        height: 25rem;
+    }
+
+    .country-details-article {
+        background-color: blue;
+        height: 21rem;
+        align-self: center;
+    }
+
+    h2 {
+        margin-bottom: 1.5rem;
+        @include titleFont();
+        font-size: 2rem;
+        width: 100%;
+    }
+
+
+    .country-details-text-div {
+        display: flex;
+        justify-content: space-between;
+        gap: 4rem;
+        margin-bottom: 4.25rem;
+        background-color: green;
+    }
+
+    .country-main-info {
+        width: 38%;
+        background-color: pink;
+    }
+
+    .country-sub-info {
+        width: 50%;
+        background-color: orange;
+    }
+
+
+    strong {
+        @include subTitleFont();
+    }
+
+    p {
+        @include bodyFont();
+        margin-bottom: 0.5rem;
+    }
+
+    h4 {
+        @include subTitleFont();
+    }
+
+
+    .border-countries-section {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    button {
+        width: 5.3rem;
+        height: 1.8rem;
+        margin-right: 0.4rem;
+        margin-bottom: 0.3rem;
+        @include bodyFont();
+        cursor: pointer;
+    }
+
+
+}
+
+}

@@ -1,6 +1,6 @@
 
 
-@if (country$ | async; as country) {
+<!-- @if (country$ | async; as country) {
   <div class="details-card">
     <img [src]="country.flags.svg" alt="Flag of {{ country.name.common }}" />
 
@@ -14,9 +14,6 @@
     <p><strong>Capital:</strong> {{ country.capital?.[0] || 'N/A' }}</p>
     <p><strong>Currencies:</strong> {{ country.currencies | json }}</p>
     <p><strong>Languages:</strong> {{ country.languages | json }}</p>
-
-    <!-- @for( let border of country.borders) -->
-    <!-- <p><strong>Border Countries:</strong> {{ country.borders | json }}</p> -->
 
     @if( borderCountries$ | async; as borders ) {
       <div>
@@ -44,4 +41,74 @@
 
 </div>
 
-}
+} -->
+
+
+<main class="container">
+  <app-navbar />
+
+  <article class="main-content">
+    <button class="back-button" (click)="goToCountryList()">Back</button>
+
+    <section class="country-details-section">
+      @if( country$ | async; as country ) {
+        <section class="country-details-flex">
+          <div class="country-flag-div">
+            <img class="country-flag-img" [src]="country.flags.svg" alt="Flag of {{ country.name.common }}" />
+          </div>
+
+          <article class="country-details-article">
+            <h2>{{ country.name.common }}</h2>
+            <div class="country-details-text-div">
+              <div class="country-main-info">
+                <p><strong>Native Name:</strong> {{ country.name.common }}</p>
+                <p><strong>Population:</strong> {{ country.population | number }}</p>
+                <p><strong>Region:</strong> {{ country.region }}</p>
+                <p><strong>Sub Region:</strong> {{ country.subregion || 'N/A' }}</p>
+                <p><strong>Capital:</strong> {{ country.capital?.[0] || 'N/A' }}</p>
+              </div>
+
+              <div class="country-sub-info">
+                <p><strong>Top Level Domain:</strong> {{ country.tld || 'N/A' }}</p>
+                <p><strong>Currencies:</strong> {{ getCurrencyList( country.currencies ) }}</p>
+                <p><strong>Languages:</strong> {{ getLanguageList( country.languages ) }}</p>
+              </div>
+
+            </div>
+
+            @if( borderCountries$ | async; as borders ) {
+              <section class="border-countries-section">
+                <h4>Border countries:</h4>
+                @if( borders.length > 0 ) {
+                  <div class="border-country-list">
+                      @for (country of borders; track $index) {
+                        @if( country ) {
+                          <button (click)="goToDetails(country.cca3)">
+                            {{ country.name.common }}
+                          </button>
+                        }
+                        @else {
+                          <p>N/A</p>
+                        }
+                      }
+                  </div>
+                }
+              </section>
+            }
+
+          </article>
+
+        </section>
+      }
+      @else {
+        <strong>Loading country details...</strong>
+      }
+    </section>
+
+
+
+
+
+  </article>
+
+</main>

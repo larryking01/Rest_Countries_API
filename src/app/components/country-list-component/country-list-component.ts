@@ -3,8 +3,7 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { CountryApiService } from '../../services/countryApi/country-api-service';
 import { Store } from '@ngrx/store'
 import { Subscription, tap, debounceTime, distinctUntilChanged } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { loadCountries, setSearchQuery, setFilterRegion } from '../../../store/countries/countries.actions';
 import { selectError, selectFilteredCountries, selectLoading } from '../../../store/countries/countries.selectors';
