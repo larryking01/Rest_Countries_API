@@ -1,4 +1,7 @@
 @use './app/styles/_resets' as *;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+
 
 
 :root {
@@ -7,4 +10,8 @@
     --title-text-col: #111517;
     --sub-title-text-col: #111517;
     --normal-text-col: #848484;
+    --font-col: #111517;
+    --theme-nav-box-shadow-col: rgba(0, 0, 0, 0.0562);
+    --theme-control-box-shadow-col: rgba(0, 0, 0, 0.0532);
+    --theme-country-card-box-shadow-col: rgba(0, 0, 0, 0.0294);
 }
