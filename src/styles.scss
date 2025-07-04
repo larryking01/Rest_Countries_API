@@ -16,6 +16,7 @@
     --theme-country-card-box-shadow-col: rgba(0, 0, 0, 0.0294);
     --theme-btn-box-shadow-col: rgba(0, 0, 0, 0.2931);
     --theme-icon-bg: #111517;
+    --theme-element-hover-col: blue;
 }
 
 
@@ -29,6 +30,8 @@ body.dark {
     --font-col: #FFFFFF;
     --theme-nav-box-shadow-col: rgba(0, 0, 0, 0.0562);
     --theme-control-box-shadow-col: rgba(0, 0, 0, 0.0532);
-    --theme-country-card-box-shadow-col: rgba(0, 0, 0, 0.0294);
+    --theme-country-card-box-shadow-col: rgba(#FFFFFF, 0.029);
     --theme-icon-bg: #FFFFFF;
+    --theme-element-hover-col: #fff;
+
 }

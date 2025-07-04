@@ -1,54 +1,9 @@
 
-
-<!-- @if (country$ | async; as country) {
-  <div class="details-card">
-    <img [src]="country.flags.svg" alt="Flag of {{ country.name.common }}" />
-
-    <h2>{{ country.name.common }}</h2>
-    <p><strong>Native Name:</strong> {{ country.name.common }}</p>
-    <p><strong>Population:</strong> {{ country.population }}</p>
-    <p><strong>Region:</strong> {{ country.region }}</p>
-    <p><strong>Sub Region:</strong> {{ country.subregion || 'N/A' }}</p>
-    <p><strong>Capital:</strong> {{ country.capital?.[0] || 'N/A' }}</p>
-    <p><strong>Top Level Domain:</strong> {{ country.tld || 'N/A' }}</p>
-    <p><strong>Capital:</strong> {{ country.capital?.[0] || 'N/A' }}</p>
-    <p><strong>Currencies:</strong> {{ country.currencies | json }}</p>
-    <p><strong>Languages:</strong> {{ country.languages | json }}</p>
-
-    @if( borderCountries$ | async; as borders ) {
-      <div>
-        <h4>Border countries</h4>
-        @if( borders.length > 0 ) {
-          <div class="border-country-list">
-              @for (country of borders; track $index) {
-                @if( country ) {
-                  <button (click)="goToDetails(country.cca3)">
-                    {{ country.name.common }}
-                  </button>
-                }
-              }
-          </div>
-        }
-      </div>
-    } 
-    @else {
-       <p>Loading country details...</p>
-    }
-
-
-<button (click)="goToCountryList()">Back to List</button>
-
-
-</div>
-
-} -->
-
-
 <main class="container">
   <app-navbar />
 
   <article class="main-content">
-    <button class="back-button" (click)="goToCountryList()">Back</button>
+    <button class="back-button" routerLink="/">Back</button>
 
     <section class="country-details-section">
       @if( country$ | async; as country ) {

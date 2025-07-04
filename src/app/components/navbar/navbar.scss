@@ -11,24 +11,14 @@ nav {
     box-shadow: 0px 2px 4px 0px var(--theme-nav-box-shadow-col);
 
 
-    div {
-        align-self: center;
-        display: flex;
-        justify-content: space-between;
-        width: 6.5rem;
-        cursor: pointer;
-        // background-color: red;
-    }
-
-
     h2{
         align-self: center;
         @include titleFont();
     }
 
-    .dark-mode-text {
-        @include regularFont();
-        font-weight: bold;
+
+    .theme-switcher-wrapper {
+        align-self: center;
     }
 
 }
@@ -40,21 +30,11 @@ nav {
     nav {
         padding: 0 1rem;
 
-        div {
-            width: 6rem;
-        }
 
         h2 {
             font-size: 0.9rem;
         }
 
-        .dark-theme-icon {
-            width: 1rem;
-        }
-
-        .dark-mode-text {
-            font-size: 0.75rem;
-        }
     }
 }
 
@@ -64,20 +44,10 @@ nav {
     nav {
         padding: 0 1rem;
 
-        div {
-            width: 6rem;
-        }
 
         h2 {
             font-size: 0.9rem;
         }
 
-        .dark-theme-icon {
-            width: 1rem;
-        }
-
-        .dark-mode-text {
-            font-size: 0.75rem;
-        }
     }
 }

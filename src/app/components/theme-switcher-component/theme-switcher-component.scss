@@ -1,0 +1,60 @@
+@use '../../styles/_reusables' as *;
+
+
+div {
+    display: flex;
+    justify-content: space-between;
+    width: 6.5rem;
+    cursor: pointer;
+    // background-color: red;
+    transition: border 0.3s ease;
+
+    &:hover {
+         border: 1px solid var(--theme-element-hover-col);
+      }
+
+    .theme-mode-text {
+        @include regularFont();
+        font-weight: bold;
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+    div {
+        width: 6rem;
+
+        .theme-icon {
+            width: 1rem;
+        }
+
+        .theme-mode-text {
+            font-size: 0.75rem;
+        }
+    }
+
+}
+
+
+
+
+@media (min-width: 601px) and (max-width: 1023px) {
+    div {
+        width: 6rem;
+
+        .theme-icon {
+            width: 1rem;
+        }
+
+        .theme-mode-text {
+            font-size: 0.75rem;
+        }
+        
+    }
+
+}
+
+
+

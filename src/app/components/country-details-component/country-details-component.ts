@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CountryState } from '../../../store/countries/countries.state';
 import { loadCountryByCode } from '../../../store/countries/countries.actions';
@@ -11,7 +11,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-country-details-component',
-  imports: [AsyncPipe, Navbar, CommonModule],
+  imports: [AsyncPipe, Navbar, CommonModule, RouterModule],
   templateUrl: './country-details-component.html',
   styleUrl: './country-details-component.scss'
 })
@@ -36,11 +36,6 @@ export class CountryDetailsComponent implements OnInit {
       }
     })
 
-  }
-
-
-  goToCountryList() {
-    this.router.navigate(['/'])
   }
 
   goToDetails(code: string) {
