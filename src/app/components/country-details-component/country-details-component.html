@@ -1,6 +1,6 @@
 
 
-@if (country$ | async; as country) {
+<!-- @if (country$ | async; as country) {
   <div class="details-card">
     <img [src]="country.flags.svg" alt="Flag of {{ country.name.common }}" />
 
@@ -14,9 +14,6 @@
     <p><strong>Capital:</strong> {{ country.capital?.[0] || 'N/A' }}</p>
     <p><strong>Currencies:</strong> {{ country.currencies | json }}</p>
     <p><strong>Languages:</strong> {{ country.languages | json }}</p>
-
-    <!-- @for( let border of country.borders) -->
-    <!-- <p><strong>Border Countries:</strong> {{ country.borders | json }}</p> -->
 
     @if( borderCountries$ | async; as borders ) {
       <div>
@@ -44,4 +41,14 @@
 
 </div>
 
-}
+} -->
+
+
+<main class="container">
+  <app-navbar />
+
+  <article class="main-content">
+
+  </article>
+
+</main>

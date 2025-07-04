@@ -7,10 +7,11 @@ import { loadCountryByCode } from '../../../store/countries/countries.actions';
 import { selectBorderCountries, selectSelectedCountry } from '../../../store/countries/countries.selectors';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { CountryApiService } from '../../services/countryApi/country-api-service';
+import { Navbar } from '../navbar/navbar';
 
 @Component({
   selector: 'app-country-details-component',
-  imports: [AsyncPipe, JsonPipe],
+  imports: [AsyncPipe, JsonPipe, Navbar],
   templateUrl: './country-details-component.html',
   styleUrl: './country-details-component.scss'
 })
