@@ -1,7 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectTheme } from '../../../store/theme/theme.selectors';
-import { toggleTheme } from '../../../store/theme/theme.actions';
+import { Themes } from '../../services/themeService/themes';
+// import { Store } from '@ngrx/store';
+// import { selectTheme } from '../../../store/theme/theme.selectors';
+// import { toggleTheme } from '../../../store/theme/theme.actions';
 
 
 @Component({
@@ -12,25 +13,15 @@ import { toggleTheme } from '../../../store/theme/theme.actions';
 })
 export class ThemeSwitcherComponent implements OnInit{
 
-  private store = inject( Store )
-
-  isDark: boolean = false
+  themeService = inject( Themes )
 
 
   ngOnInit(): void {
-    this.store.select( selectTheme ).subscribe( theme => {
-      document.body.classList.toggle('dark', theme === 'dark')
-      if( theme === 'dark' ) {
-        this.isDark = true
-      }
-      else {
-        this.isDark = false
-      }
-    })
+    this.themeService.initializeTheme()
   }
 
   toggleTheme() {
-     this.store.dispatch(toggleTheme())
+    this.themeService.switchTheme()
   }
 
 

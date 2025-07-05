@@ -35,3 +35,8 @@ body.dark {
     --theme-element-hover-col: #fff;
 
 }
+
+
+body.dark .select-input {
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.45 3.45L6 6.9L2.55 3.45L1.5 4.5L6 9L10.5 4.5L9.45 3.45Z' fill='%23FFFFFF'/%3E%3C/svg%3E") !important;
+}

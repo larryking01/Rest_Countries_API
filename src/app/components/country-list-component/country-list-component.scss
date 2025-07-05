@@ -1,6 +1,7 @@
 @use '../../styles/_reusables' as *;
 
 
+
 .container {
   background-color: var(--theme-bg);
   transition: background-color 0.4s ease, color 0.4s ease;
@@ -20,6 +21,7 @@
 
    .search-input-div {
       position: relative;
+      color: var(--font-col);
    }
 
    .search-icon {
@@ -52,10 +54,11 @@
 
    }
 
+
    .select-input {
-      // appearance: none;
-      // -moz-appearance: none;    
-      // -webkit-appearance: none;
+      appearance: none;
+      -moz-appearance: none;    
+      -webkit-appearance: none;
       background-color: var(--element-bg);
       width: 12.5rem;
       height: 3.5rem;
@@ -66,8 +69,12 @@
       cursor: pointer;
       box-shadow: 0px 2px 9px 0px var(--theme-control-box-shadow-col);
       transition: border 0.3s ease;
-      
-      
+      color: var(--font-col);
+
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.45 3.45L6 6.9L2.55 3.45L1.5 4.5L6 9L10.5 4.5L9.45 3.45Z' fill='#{$dropdown-arrow-light}'/%3E%3C/svg%3E");      
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
       
       &:hover {
          border: 1px solid var(--theme-element-hover-col);
