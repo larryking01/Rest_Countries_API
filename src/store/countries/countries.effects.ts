@@ -33,7 +33,7 @@ export class CountryEffects {
         this.countryApiService.fetchCountryByCode(code).pipe(
           map((country) => CountryActions.loadCountryByCodeSuccess({ country })),
           catchError((error) =>
-            of(CountryActions.loadCountryByCodeFailure({ error: "Something went wrong while fetching data for this country. Please check your connection or try again later." }))
+            of(CountryActions.loadCountryByCodeFailure({ error: "Something went wrong while fetching data for this country. Either the Alpha Code was not found or your connection is poor. Please verify and try again." }))
           )
         )
       )
