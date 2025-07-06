@@ -1,19 +1,19 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, Input } from '@angular/core';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { CountryApiService } from '../../services/countryApi/country-api-service';
 import { Store } from '@ngrx/store'
-import { Subscription, tap, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { loadCountries, setSearchQuery, setFilterRegion } from '../../../store/countries/countries.actions';
 import { selectError, selectFilteredCountries, selectLoading } from '../../../store/countries/countries.selectors';
 import { Navbar } from '../navbar/navbar';
-
+import { ErrorBanner } from '../error-banner/error-banner';
 
 
 @Component({
   selector: 'app-country-list-component',
-  imports: [AsyncPipe, CommonModule, ReactiveFormsModule, Navbar],
+  imports: [AsyncPipe, CommonModule, ReactiveFormsModule, Navbar, ErrorBanner],
   templateUrl: './country-list-component.html',
   styleUrl: './country-list-component.scss'
 })

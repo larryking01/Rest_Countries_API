@@ -12,10 +12,8 @@ import { Country } from '../../../models/countryInterface';
 export class CountryApiService {
 
   httpClient = inject( HttpClient )
-  fields = 'all?fields=name,population,region,capital,subregion,cca3,capital,currencies,languages,flags'
-  rawFields = 'https://restcountries.com/v3.1/all?fields=name,population,region,capital,subregion,capital,tld,currencies,languages,flags'
 
-  countriesUrl = `${ environment.base_url }${ this.fields }`
+  countriesUrl = `${ environment.base_url }${ environment.fields }`
 
   constructor() { }
 
@@ -25,10 +23,10 @@ export class CountryApiService {
   }
 
 
-  fetchCountryByCode(countryCode: string = 'TGO') {
-    return this.httpClient.get<Country[]>(`https://restcountries.com/v3.1/alpha/${ countryCode }`)
+  fetchCountryByCode(countryCode: string) {
+    return this.httpClient.get<Country[]>(`${ environment.alphaCodeUrl }${ countryCode }`)
     .pipe(
-      map((response: any) => response[0])    // correctly type response later
+      map((response: Country[]) => response[0])
     )
   }
 

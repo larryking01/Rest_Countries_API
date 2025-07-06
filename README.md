@@ -1,59 +1,160 @@
-# RestCountriesAPI
+# Rest Countries API
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+## Project Description
+A responsive Angular application that displays detailed information about countries using the [REST Countries API](https://restcountries.com/). 
+It allows users to browse and search for countries by name, filter them by region, view detailed information about each country (including border countries), and switch between light and dark themes. 
+It provides a clean UI and maintains a global app state using NgRx.
 
-## Development server
 
-To start a local development server, run:
 
-```bash
+## Setup & Run Instructions
+
+1. **Clone the repository**
+git clone https://github.com/larryking01/Rest_Countries_API
+cd Rest_Countries_API
+
+
+2. **Install dependencies**
+npm install
+
+
+3. **Run the development server**
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+4. Open your browser at http://localhost:4200 
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Application Features
+✅ Search countries by name
 
-```bash
-ng generate --help
-```
+✅ Filter countries by region
 
-## Building
+✅ View detailed information on each country
 
-To build the project run:
+✅ View border countries and navigate to them
 
-```bash
-ng build
-```
+✅ Light/Dark theme switching
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+✅ 404 Not Found page for unknown routes
 
-## Running unit tests
+✅ Fully responsive and mobile-friendly design
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+## Component Structure
+Component	                                               Description
+# country-list-component	                       Displays searchable and filterable list of 
 
-For end-to-end (e2e) testing, run:
+# country-details-component	                       Displays full details of a selected country
 
-```bash
-ng e2e
-```
+# theme-switcher-component	                       Button to toggle between light and dark mode
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+# not-found-component	                           Handles 404 page display for unmatched routes
 
-## Additional Resources
+# error-banner                                     Displays user-friendly error messages to users on
+                                                   http requests failure.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Services Structure
+Folder                                                       Description
+# countryAPI                                      Handles API requests to the rest countries api. 
+
+# themeService                                    Contains methods to initialize and toggle theme using the
+                                                  NgRX theme store. This service is injected by the
+                                                  theme-switcher-component for theme operations.
+
+# errors                                          Contains error handling logic. Displays error to users in
+                                                  the case of a failed API call to fetch all countries or
+                                                  load a selected country's full details.
+
+
+
+## Models Folder - contains two files define the shape of a country and theme respectively.
+File                                                             Description
+# countryInterface.ts                             Defines a country object based on the REST Countries API
+                                                  response and the specifications provided in the Figma design.
+
+
+# themeInterface.ts                               Defines a theme object.
+                                                  
+
+
+## 🧭 Routing Overview
+Route	                                                            Description
+# /	                                                   Home page displaying all countries
+
+# /country-details/:code	                           Details page for a selected country
+
+# **	                                               Wildcard route redirects to 404 page
+
+Routing is configured using Angular's standalone routing system.
+
+
+
+
+## 🌐 API Consumption
+The app consumes the REST Countries API v3.1 to fetch data about all countries.
+
+GET all countries: https://restcountries.com/v3.1/all?fields=name,population,region,capital,subregion,cca3,capital,currencies,languages,flags'
+
+'fields' param is compulsory to specify what part of the country data you want, otherwise the server returns
+a bad response.
+
+GET country by code: https://restcountries.com/v3.1/alpha/{code}
+
+API calls are handled in a dedicated CountryApiService.
+
+
+
+
+## 🧠 NgRx Store Implementation
+NgRx is used to manage application state for countries and theme.
+
+# Country State:
+* Actions: loadCountries, loadCountryByCode, setSearchQuery, setFilterRegion, selectCountry
+
+* Reducer: Updates state based on loading, error, and filtering conditions
+
+* Effects: Side effects for async API calls (fetching country list and single country)
+
+* Selectors: Retrieve filtered, searched, or selected countries from state
+
+
+
+# Theme State:
+* Actions: toggleTheme, setTheme
+
+* Reducer: Switches between light and dark modes
+
+* Effects: Persists the selected theme to localStorage and loads it on startup
+
+* Selectors: Retrieve set theme
+
+
+
+
+## 🎨 Theme Switching Implementation
+* User can toggle between light and dark themes using the theme switcher.
+
+* Theme state is managed with NgRx and persisted in localStorage.
+
+* The <body> element is updated with a .dark class to apply appropriate CSS variables.
+
+* CSS uses var(--font-col), --theme-bg, etc., to support both themes.
+
+
+
+
+## 🌿 Git Workflow
+The project uses a simple branching strategy:
+
+main: Production-ready code
+
+development: Active development branch
+
+Changes are committed with meaningful messages and merged using pull requests.
+
+

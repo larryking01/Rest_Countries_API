@@ -40,7 +40,9 @@
         @if( countries.length > 0 ) {
           <div class="display-grid">
             @for( country of countries; let index = $index; track country.name.common; let count = $count ) {
-              <div class="country-card" (click)="goToDetails(country.cca3)">
+              <div class="country-card" tabindex="0" role="button" aria-label="View country details"
+                   (click)="goToDetails(country.cca3)"
+                    >
                 <img
                   [src]="country.flags.png"
                   [alt]="country.flags.alt || country.name.common"
@@ -57,14 +59,11 @@
           </div>
         }
         @else {
-            <p>No countries match your search or filter.</p>
+            <p class="no-filter-results">No countries match your search or filter.</p>
           }      
         }
         @if(errors$ | async; as error ) {
-            <div class="error-box">
-              <p>Error: {{ error }}</p>
-              <button (click)="retryLoad()">Retry</button>  
-            </div>
+          <app-error-banner [httpError]="error"></app-error-banner>
         }
 
     </section>

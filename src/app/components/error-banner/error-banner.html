@@ -1,0 +1,8 @@
+<div class="error-banner">
+    <p>Error: {{ httpError }}</p>
+
+    <div class="error-action-btns">
+        <button (click)="refreshPage()">Retry</button>  
+        <button (click)="closeError()">Close</button>  
+    </div>
+</div>

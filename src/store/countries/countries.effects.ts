@@ -18,7 +18,7 @@ export class CountryEffects {
           retry(2),
           map((countries) => CountryActions.loadCountriesSuccess({ countries })),
           catchError((error) =>
-            of(CountryActions.loadCountriesFailure({ error: error.message }))
+            of(CountryActions.loadCountriesFailure({ error: "Oops! Something went wrong. We couldn’t load country data at the moment — maybe the internet took a little trip. Please check your connection and try again." }))
           )
         )
       )
@@ -33,7 +33,7 @@ export class CountryEffects {
         this.countryApiService.fetchCountryByCode(code).pipe(
           map((country) => CountryActions.loadCountryByCodeSuccess({ country })),
           catchError((error) =>
-            of(CountryActions.loadCountryByCodeFailure({ error: error.message }))
+            of(CountryActions.loadCountryByCodeFailure({ error: "Something went wrong while fetching data for this country. Please check your connection or try again later." }))
           )
         )
       )
