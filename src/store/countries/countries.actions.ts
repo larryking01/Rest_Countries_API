@@ -30,6 +30,8 @@ export const loadCountryByCodeFailure = createAction(
   props<{ error: string }>()
 )
 
+export const clearError = createAction('[Country API] Clear Error')
+
 export const setSearchQuery = createAction(
   '[Country Filter] Set Search Query',
   props<{ query: string }>()
@@ -44,5 +46,6 @@ export const selectCountry = createAction(
   '[Country] Select Country',
   props<{ country: Country }>()
 )
+
 
 

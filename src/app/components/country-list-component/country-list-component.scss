@@ -10,6 +10,7 @@
 
   .main-content {
    padding: 3rem 5rem;
+   min-height: 100vh;
 
 
    .filter-controls {
@@ -94,9 +95,15 @@
       gap: 2.4rem;
    }
 
+   .no-filter-results {
+      @include bodyFont();
+      margin-bottom: 2rem;
+   }
+
    .country-card {
       background-color: var(--element-bg);
       width: 17rem;
+      max-width: 100%;
       cursor: pointer;
       box-shadow: 0px 0px 7px 2px var(--theme-country-card-box-shadow-col);
       border-radius: 5px;
@@ -208,7 +215,7 @@
 
    .display-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
       gap: 2.4rem;
       padding: 0 2rem;
       // background-color: green;

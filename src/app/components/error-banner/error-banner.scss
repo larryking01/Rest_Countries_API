@@ -1,0 +1,50 @@
+@use '../../styles/_reusables' as *;
+
+
+.error-banner {
+  background-color: rgb(204, 31, 31);
+  // background-color: var(--theme-bg);
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  height: 40%;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+
+
+  p {
+    margin-bottom: 1.5rem;
+    @include subTitleFont();
+  }
+
+
+  .error-action-btns {
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+  }
+
+
+  button {
+      margin-bottom: 4rem 0;
+      height: 2.5rem;
+      width: 8.5rem;
+      padding: 0.625rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      transition: border 0.3s ease;
+      background-color: var(--theme-bg);
+      border: none;
+      cursor: pointer;
+      @include subTitleFont();
+
+      &:hover {
+         border: 1px solid var(--theme-element-hover-col);
+      }
+  }
+
+
+  // @media (prefers-color-scheme: dark) {
+  //   background-color: #442222;
+  //   color: #ffcccc;
+  // }
+}

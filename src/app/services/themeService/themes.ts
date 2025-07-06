@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectTheme } from '../../../store/theme/theme.selectors';
 import { toggleTheme } from '../../../store/theme/theme.actions';
@@ -38,6 +38,4 @@ export class Themes {
     this.store.dispatch( toggleTheme() )
   }
 
-
-  
 }

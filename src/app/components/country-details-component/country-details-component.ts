@@ -5,13 +5,15 @@ import { Store } from '@ngrx/store';
 import { selectTheme } from '../../../store/theme/theme.selectors';
 import { CountryState } from '../../../store/countries/countries.state';
 import { loadCountryByCode } from '../../../store/countries/countries.actions';
-import { selectBorderCountries, selectSelectedCountry } from '../../../store/countries/countries.selectors';
+import { selectBorderCountries, selectSelectedCountry, selectError } from '../../../store/countries/countries.selectors';
 import { Navbar } from '../navbar/navbar';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { ErrorBanner } from '../error-banner/error-banner';
+
 
 @Component({
   selector: 'app-country-details-component',
-  imports: [AsyncPipe, Navbar, CommonModule, RouterModule],
+  imports: [AsyncPipe, Navbar, CommonModule, RouterModule, ErrorBanner],
   templateUrl: './country-details-component.html',
   styleUrl: './country-details-component.scss'
 })
@@ -25,6 +27,8 @@ export class CountryDetailsComponent implements OnInit {
   country$ = this.store.select(selectSelectedCountry)
 
   borderCountries$ = this.store.select(selectBorderCountries)
+
+  errors$ = this.store.select(selectError)
 
   isDark: boolean = false;
 

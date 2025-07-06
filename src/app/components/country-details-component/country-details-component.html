@@ -83,8 +83,12 @@
         </section>
       }
       @else {
-        <strong>Loading country details...</strong>
+        <p class="loading-text">Loading country details...</p>
       }
+      @if(errors$ | async; as error ) {
+          <app-error-banner [httpError]="error"></app-error-banner>
+        }
+
     </section>
 
 
